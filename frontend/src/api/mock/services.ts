@@ -320,9 +320,10 @@ export const uploadService = {
 // Competitors (mock — backend Phase 1.1 doesn't expose competitors CRUD)
 // --------------------------------------------------------------------------- //
 const mockCompetitors: Competitor[] = [
-  { id: "cp_001", name: "GlossAura", domain: "glossaura.com", shareOfVoice: 28, traffic: 1_240_000, keywords: 4820, ads: 124, trend: [22, 25, 24, 28, 30, 27, 28], change: 12.4 },
-  { id: "cp_002", name: "Velvet Labs", domain: "velvetlabs.co", shareOfVoice: 22, traffic: 980_000, keywords: 3120, ads: 98, trend: [30, 28, 26, 24, 23, 22, 22], change: -8.1 },
-  { id: "cp_003", name: "PureHue", domain: "purehue.io", shareOfVoice: 18, traffic: 760_000, keywords: 2840, ads: 76, trend: [14, 15, 16, 17, 17, 18, 18], change: 4.2 },
+  { id: "cp_001", name: "Petals Beauty", domain: "petalsbeauty.com", shareOfVoice: 28, traffic: 1_240_000, keywords: 4820, ads: 124, trend: [22, 25, 24, 28, 30, 27, 28], change: 12.4 },
+  { id: "cp_002", name: "Ilia Beauty", domain: "iliabeauty.com", shareOfVoice: 22, traffic: 980_000, keywords: 3120, ads: 98, trend: [30, 28, 26, 24, 23, 22, 22], change: -8.1 },
+  { id: "cp_003", name: "Zayfied", domain: "zayfied.com", shareOfVoice: 18, traffic: 760_000, keywords: 2840, ads: 76, trend: [14, 15, 16, 17, 17, 18, 18], change: 4.2 },
+  { id: "cp_004", name: "Organic Lab", domain: "organiclab.com", shareOfVoice: 15, traffic: 620_000, keywords: 2340, ads: 65, trend: [10, 12, 14, 13, 15, 14, 15], change: 6.8 },
 ];
 
 export const competitorService = {
