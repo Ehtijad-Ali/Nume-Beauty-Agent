@@ -232,7 +232,7 @@ export default function Products() {
                   >
                     <TableCell className="font-medium">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500/15 to-indigo-500/15 text-primary">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary/15 to-[hsl(var(--chart-2)/0.15)] text-primary">
                           <Package className="h-4 w-4" />
                         </div>
                         <span>{p.name}</span>

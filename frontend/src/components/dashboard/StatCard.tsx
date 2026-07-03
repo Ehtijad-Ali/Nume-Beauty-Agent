@@ -14,12 +14,13 @@ interface StatCardProps {
   subtitle?: string;
 }
 
+// accents map to theme-aware chart tokens, so no dark: overrides are needed
 const ACCENT_CLASS: Record<NonNullable<StatCardProps["accent"]>, string> = {
-  primary: "from-violet-500/20 to-violet-500/5 text-violet-600 dark:text-violet-300",
-  blue: "from-sky-500/20 to-sky-500/5 text-sky-600 dark:text-sky-300",
-  green: "from-emerald-500/20 to-emerald-500/5 text-emerald-600 dark:text-emerald-300",
-  amber: "from-amber-500/20 to-amber-500/5 text-amber-600 dark:text-amber-300",
-  rose: "from-rose-500/20 to-rose-500/5 text-rose-600 dark:text-rose-300",
+  primary: "from-[hsl(var(--chart-1)/0.16)] to-[hsl(var(--chart-1)/0.05)] text-[hsl(var(--chart-1))]",
+  blue: "from-[hsl(var(--chart-4)/0.16)] to-[hsl(var(--chart-4)/0.05)] text-[hsl(var(--chart-4))]",
+  green: "from-[hsl(var(--success)/0.16)] to-[hsl(var(--success)/0.05)] text-success",
+  amber: "from-[hsl(var(--chart-5)/0.16)] to-[hsl(var(--chart-5)/0.05)] text-[hsl(var(--chart-5))]",
+  rose: "from-[hsl(var(--chart-2)/0.16)] to-[hsl(var(--chart-2)/0.05)] text-[hsl(var(--chart-2))]",
 };
 
 export function StatCard({

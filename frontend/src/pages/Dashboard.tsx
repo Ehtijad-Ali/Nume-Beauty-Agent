@@ -52,11 +52,11 @@ const trafficData = [
 ];
 
 const channelData = [
-  { name: "Email", value: 3120, color: "hsl(262 83% 58%)" },
-  { name: "Social", value: 8910, color: "hsl(199 89% 48%)" },
-  { name: "Search", value: 7340, color: "hsl(142 71% 45%)" },
-  { name: "Display", value: 1980, color: "hsl(38 92% 50%)" },
-  { name: "Affiliate", value: 980, color: "hsl(0 72% 51%)" },
+  { name: "Email", value: 3120, color: "hsl(var(--chart-1))" },
+  { name: "Social", value: 8910, color: "hsl(var(--chart-2))" },
+  { name: "Search", value: 7340, color: "hsl(var(--chart-3))" },
+  { name: "Display", value: 1980, color: "hsl(var(--chart-4))" },
+  { name: "Affiliate", value: 980, color: "hsl(var(--chart-5))" },
 ];
 
 const activityIcons: Record<string, React.ReactNode> = {
@@ -154,8 +154,8 @@ export default function Dashboard() {
                 <AreaChart data={trafficData} margin={{ left: -20, right: 8, top: 8, bottom: 0 }}>
                   <defs>
                     <linearGradient id="gradTraffic" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="hsl(262 83% 58%)" stopOpacity={0.35} />
-                      <stop offset="100%" stopColor="hsl(262 83% 58%)" stopOpacity={0} />
+                      <stop offset="0%" stopColor="hsl(var(--chart-1))" stopOpacity={0.35} />
+                      <stop offset="100%" stopColor="hsl(var(--chart-1))" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
@@ -185,7 +185,7 @@ export default function Dashboard() {
                   <Area
                     type="monotone"
                     dataKey="value"
-                    stroke="hsl(262 83% 58%)"
+                    stroke="hsl(var(--chart-1))"
                     strokeWidth={2.5}
                     fill="url(#gradTraffic)"
                   />

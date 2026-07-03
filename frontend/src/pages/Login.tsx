@@ -66,7 +66,7 @@ export default function Login() {
             transition={{ duration: 0.4 }}
             className="space-y-2"
           >
-            <h1 className="text-3xl font-bold tracking-tight">Welcome back</h1>
+            <h1 className="font-display text-3xl font-semibold tracking-tight">Welcome back</h1>
             <p className="text-sm text-muted-foreground">
               Sign in to your NUMÉ workspace to continue.
             </p>
@@ -157,7 +157,7 @@ export default function Login() {
       </div>
 
       {/* Right: showcase panel */}
-      <div className="relative hidden overflow-hidden bg-gradient-to-br from-violet-700 via-indigo-700 to-blue-700 lg:block">
+      <div className="relative hidden overflow-hidden bg-brand-gradient lg:block">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_60%)]" />
         <div
           className="absolute inset-0 opacity-30"
@@ -179,7 +179,7 @@ export default function Login() {
               <Sparkles className="h-3.5 w-3.5" />
               AI Marketing Intelligence
             </span>
-            <h2 className="mt-6 text-4xl font-bold leading-tight">
+            <h2 className="mt-6 font-display text-4xl font-medium leading-tight">
               Turn every signal into your next campaign.
             </h2>
             <p className="mt-3 text-white/80">

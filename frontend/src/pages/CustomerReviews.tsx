@@ -52,7 +52,9 @@ function StarRating({ rating, size = "sm" }: { rating: number; size?: "sm" | "md
           key={n}
           className={cn(
             size === "md" ? "h-4 w-4" : "h-3 w-3",
-            n <= rating ? "fill-amber-400 text-amber-400" : "fill-muted text-muted-foreground/30"
+            n <= rating
+              ? "fill-[hsl(var(--chart-5))] text-[hsl(var(--chart-5))]"
+              : "fill-muted text-muted-foreground/30"
           )}
         />
       ))}
@@ -87,8 +89,8 @@ export default function CustomerReviews() {
       {/* Stat row */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {[
-          { label: "Total Reviews", value: stats.total, icon: Star, color: "text-amber-500" },
-          { label: "Average Rating", value: `${stats.avg.toFixed(1)} / 5`, icon: Star, color: "text-amber-500" },
+          { label: "Total Reviews", value: stats.total, icon: Star, color: "text-[hsl(var(--chart-5))]" },
+          { label: "Average Rating", value: `${stats.avg.toFixed(1)} / 5`, icon: Star, color: "text-[hsl(var(--chart-5))]" },
           { label: "Positive", value: stats.positive, icon: ThumbsUp, color: "text-success" },
           { label: "Needs Attention", value: stats.negative, icon: ThumbsDown, color: "text-destructive" },
         ].map((s, i) => (
@@ -166,7 +168,7 @@ export default function CustomerReviews() {
                 <CardContent className="flex h-full flex-col p-5">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500/15 to-indigo-500/15 text-primary">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary/15 to-[hsl(var(--chart-2)/0.15)] text-primary">
                         <Quote className="h-4 w-4" />
                       </div>
                       <div>

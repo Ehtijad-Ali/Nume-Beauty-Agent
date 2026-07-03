@@ -4,99 +4,112 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    /* NUMÉ Beauty light theme — cream-tinted neutrals, crimson #BB0135 primary */
+    --background: 46 60% 96%;
+    --foreground: 340 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 340 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 340 25% 12%;
 
-    --primary: 262 83% 58%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 343 99% 37%;
+    --primary-foreground: 30 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 21 65% 94%;
+    --secondary-foreground: 340 25% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 30 25% 93%;
+    --muted-foreground: 340 9% 42%;
 
-    --accent: 262 83% 96%;
-    --accent-foreground: 262 83% 30%;
+    --accent: 345 70% 95%;
+    --accent-foreground: 343 90% 28%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
+    /* hue-shifted toward orange so danger reads distinct from brand crimson */
+    --destructive: 12 78% 45%;
+    --destructive-foreground: 0 0% 100%;
 
-    --success: 142 71% 45%;
+    --success: 152 60% 32%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 38 92% 50%;
+    --warning: 38 85% 42%;
     --warning-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 262 83% 58%;
+    --border: 30 20% 88%;
+    --input: 30 20% 88%;
+    --ring: 343 99% 37%;
 
     --sidebar: 0 0% 100%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-accent: 262 83% 96%;
-    --sidebar-border: 214 32% 91%;
+    --sidebar-foreground: 340 25% 12%;
+    --sidebar-accent: 345 70% 95%;
+    --sidebar-border: 30 20% 89%;
 
-    --chart-1: 262 83% 58%;
-    --chart-2: 199 89% 48%;
-    --chart-3: 142 71% 45%;
-    --chart-4: 38 92% 50%;
-    --chart-5: 0 72% 51%;
+    /* categorical palette, CVD-validated — keep order fixed */
+    --chart-1: 343 99% 37%;
+    --chart-2: 344 65% 63%;
+    --chart-3: 17 54% 54%;
+    --chart-4: 325 45% 34%;
+    --chart-5: 43 58% 42%;
+    --chart-6: 15 25% 38%;
+
+    --gradient-from: 346 78% 45%;
+    --gradient-to: 336 100% 25%;
 
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
+    /* NUMÉ Beauty dark theme — warm wine-toned neutrals */
+    --background: 340 25% 6%;
+    --foreground: 30 25% 95%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 340 20% 9%;
+    --card-foreground: 30 25% 95%;
 
-    --popover: 222 47% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 340 20% 11%;
+    --popover-foreground: 30 25% 95%;
 
-    --primary: 263 70% 65%;
-    --primary-foreground: 210 40% 98%;
+    /* white label sits at ~4.6:1 — do not lighten */
+    --primary: 345 65% 52%;
+    --primary-foreground: 30 40% 98%;
 
-    --secondary: 217 33% 14%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 340 15% 15%;
+    --secondary-foreground: 30 25% 95%;
 
-    --muted: 217 33% 14%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 340 15% 14%;
+    --muted-foreground: 340 10% 67%;
 
-    --accent: 263 50% 20%;
-    --accent-foreground: 263 70% 85%;
+    --accent: 343 45% 19%;
+    --accent-foreground: 345 85% 87%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 12 75% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --success: 142 71% 45%;
+    --success: 150 50% 42%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 38 92% 50%;
+    --warning: 38 80% 52%;
     --warning-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 263 70% 65%;
+    --border: 340 15% 17%;
+    --input: 340 15% 17%;
+    --ring: 345 70% 60%;
 
-    --sidebar: 222 47% 7%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-accent: 263 50% 18%;
-    --sidebar-border: 217 33% 14%;
+    --sidebar: 340 22% 7%;
+    --sidebar-foreground: 30 25% 95%;
+    --sidebar-accent: 343 45% 17%;
+    --sidebar-border: 340 15% 14%;
 
-    --chart-1: 263 70% 65%;
-    --chart-2: 199 89% 48%;
-    --chart-3: 142 71% 45%;
-    --chart-4: 38 92% 50%;
-    --chart-5: 0 72% 51%;
+    --chart-1: 345 67% 50%;
+    --chart-2: 345 59% 63%;
+    --chart-3: 20 59% 55%;
+    --chart-4: 327 34% 53%;
+    --chart-5: 38 52% 48%;
+    --chart-6: 15 25% 62%;
+
+    --gradient-from: 346 70% 50%;
+    --gradient-to: 336 90% 30%;
   }
 }
 
@@ -143,8 +156,8 @@
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(
       135deg,
-      hsl(var(--primary)),
-      hsl(199 89% 48%)
+      hsl(var(--gradient-from)),
+      hsl(var(--gradient-to))
     );
   }
 

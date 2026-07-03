@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
 import { Plus, Trash2, UserPlus, Shield, MoreHorizontal, Mail } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
@@ -119,19 +119,22 @@ export default function Users() {
           { label: "Admins", value: users.filter((u) => u.role === "admin").length, icon: Shield },
           { label: "Active", value: users.filter((u) => u.status === "active").length, icon: Shield },
           { label: "Pending Invites", value: users.filter((u) => u.status === "invited").length, icon: Mail },
-        ].map((s, i) => (
-          <Card key={i}>
-            <CardContent className="flex items-center gap-3 p-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <s.icon className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground">{s.label}</p>
-                <p className="text-xl font-bold">{s.value}</p>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        ].map((s, i) => {
+          const Icon = s.icon as LucideIcon;
+          return (
+            <Card key={i}>
+              <CardContent className="flex items-center gap-3 p-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">{s.label}</p>
+                  <p className="text-xl font-bold">{s.value}</p>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
 
       {/* Users table */}
@@ -163,18 +166,15 @@ export default function Users() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {users.map((u, i) => (
-                  <motion.tr
+                {users.map((u) => (
+                  <tr
                     key={u.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: i * 0.04 }}
                     className="border-b border-border/70 transition-colors hover:bg-muted/40"
                   >
                     <TableCell>
                       <div className="flex items-center gap-3">
                         <Avatar className="h-9 w-9">
-                          <AvatarFallback>{getInitials(u.name)}</AvatarFallback>
+                          <AvatarFallback>{u.name ? getInitials(u.name) : "??"}</AvatarFallback>
                         </Avatar>
                         <div>
                           <p className="text-sm font-medium">{u.name}</p>
@@ -183,15 +183,15 @@ export default function Users() {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <Badge variant={ROLE_VARIANT[u.role]}>{u.role}</Badge>
+                      <Badge variant={ROLE_VARIANT[u.role] || "default"}>{u.role}</Badge>
                     </TableCell>
                     <TableCell>
-                      <Badge variant={STATUS_VARIANT[u.status]} className="capitalize">
+                      <Badge variant={STATUS_VARIANT[u.status] || "success"} className="capitalize">
                         {u.status}
                       </Badge>
                     </TableCell>
-                    <TableCell className="text-muted-foreground">{timeAgo(u.lastActive)}</TableCell>
-                    <TableCell className="text-muted-foreground">{formatDate(u.createdAt)}</TableCell>
+                    <TableCell className="text-muted-foreground">{u.lastActive ? timeAgo(u.lastActive) : "Never"}</TableCell>
+                    <TableCell className="text-muted-foreground">{u.createdAt ? formatDate(u.createdAt) : "N/A"}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex items-center justify-end gap-1">
                         {u.role !== "admin" && (
@@ -210,7 +210,7 @@ export default function Users() {
                         </Button>
                       </div>
                     </TableCell>
-                  </motion.tr>
+                  </tr>
                 ))}
               </TableBody>
             </Table>

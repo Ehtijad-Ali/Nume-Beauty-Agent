@@ -13,7 +13,7 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          "Inter",
+          "Montserrat",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -23,6 +23,7 @@ export default {
           "Arial",
           "sans-serif",
         ],
+        display: ["Fraunces", "Georgia", "Times New Roman", "serif"],
         mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       colors: {
@@ -79,7 +80,12 @@ export default {
           3: "hsl(var(--chart-3))",
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
+          6: "hsl(var(--chart-6))",
         },
+      },
+      backgroundImage: {
+        "brand-gradient":
+          "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -89,11 +95,11 @@ export default {
         "2xl": "calc(var(--radius) + 8px)",
       },
       boxShadow: {
-        soft: "0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 1px 3px 0 rgba(15, 23, 42, 0.06)",
-        card: "0 1px 3px rgba(15, 23, 42, 0.05), 0 4px 12px rgba(15, 23, 42, 0.04)",
+        soft: "0 1px 2px 0 rgba(63, 22, 36, 0.04), 0 1px 3px 0 rgba(63, 22, 36, 0.06)",
+        card: "0 1px 3px rgba(63, 22, 36, 0.05), 0 4px 12px rgba(63, 22, 36, 0.04)",
         elevated:
-          "0 4px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -2px rgba(15, 23, 42, 0.06)",
-        glow: "0 0 0 1px rgba(124, 58, 237, 0.18), 0 8px 24px -8px rgba(124, 58, 237, 0.45)",
+          "0 4px 16px -2px rgba(63, 22, 36, 0.08), 0 2px 6px -2px rgba(63, 22, 36, 0.06)",
+        glow: "0 0 0 1px rgba(187, 1, 53, 0.15), 0 8px 24px -8px rgba(187, 1, 53, 0.35)",
       },
       keyframes: {
         "accordion-down": {

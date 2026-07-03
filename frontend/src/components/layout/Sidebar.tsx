@@ -32,7 +32,7 @@ export function Sidebar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-[hsl(340_25%_5%/0.65)] backdrop-blur-sm lg:hidden"
             onClick={() => setMobileOpen(false)}
           />
         )}

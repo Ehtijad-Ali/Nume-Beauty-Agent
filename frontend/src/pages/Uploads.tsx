@@ -63,17 +63,17 @@ function formatBytes(b: number): string {
 }
 
 const ACCEPTED_TYPES: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
-  pdf: { label: "PDF", icon: <FileText className="h-4 w-4" />, color: "text-rose-500" },
-  docx: { label: "DOCX", icon: <FileText className="h-4 w-4" />, color: "text-blue-500" },
-  txt: { label: "TXT", icon: <FileText className="h-4 w-4" />, color: "text-slate-500" },
-  csv: { label: "CSV", icon: <FileSpreadsheet className="h-4 w-4" />, color: "text-emerald-500" },
-  xlsx: { label: "XLSX", icon: <FileSpreadsheet className="h-4 w-4" />, color: "text-emerald-600" },
-  png: { label: "PNG", icon: <ImageIcon className="h-4 w-4" />, color: "text-purple-500" },
-  jpg: { label: "JPG", icon: <ImageIcon className="h-4 w-4" />, color: "text-purple-500" },
-  jpeg: { label: "JPEG", icon: <ImageIcon className="h-4 w-4" />, color: "text-purple-500" },
-  webp: { label: "WEBP", icon: <ImageIcon className="h-4 w-4" />, color: "text-purple-500" },
-  mp4: { label: "MP4", icon: <FileVideo className="h-4 w-4" />, color: "text-orange-500" },
-  mov: { label: "MOV", icon: <FileVideo className="h-4 w-4" />, color: "text-orange-500" },
+  pdf: { label: "PDF", icon: <FileText className="h-4 w-4" />, color: "text-primary" },
+  docx: { label: "DOCX", icon: <FileText className="h-4 w-4" />, color: "text-[hsl(var(--chart-4))]" },
+  txt: { label: "TXT", icon: <FileText className="h-4 w-4" />, color: "text-muted-foreground" },
+  csv: { label: "CSV", icon: <FileSpreadsheet className="h-4 w-4" />, color: "text-success" },
+  xlsx: { label: "XLSX", icon: <FileSpreadsheet className="h-4 w-4" />, color: "text-success" },
+  png: { label: "PNG", icon: <ImageIcon className="h-4 w-4" />, color: "text-[hsl(var(--chart-2))]" },
+  jpg: { label: "JPG", icon: <ImageIcon className="h-4 w-4" />, color: "text-[hsl(var(--chart-2))]" },
+  jpeg: { label: "JPEG", icon: <ImageIcon className="h-4 w-4" />, color: "text-[hsl(var(--chart-2))]" },
+  webp: { label: "WEBP", icon: <ImageIcon className="h-4 w-4" />, color: "text-[hsl(var(--chart-2))]" },
+  mp4: { label: "MP4", icon: <FileVideo className="h-4 w-4" />, color: "text-[hsl(var(--chart-3))]" },
+  mov: { label: "MOV", icon: <FileVideo className="h-4 w-4" />, color: "text-[hsl(var(--chart-3))]" },
 };
 
 const ACCEPT_EXT = ".pdf,.docx,.txt,.csv,.png,.jpg,.jpeg,.webp,.mp4,.mov";
@@ -313,7 +313,7 @@ export default function Uploads() {
             >
               <div
                 className={cn(
-                  "flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500/15 to-indigo-500/15 text-primary transition-transform",
+                  "flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 to-[hsl(var(--chart-2)/0.15)] text-primary transition-transform",
                   dragging && "scale-110"
                 )}
               >

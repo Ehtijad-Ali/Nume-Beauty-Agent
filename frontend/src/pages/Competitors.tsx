@@ -11,12 +11,12 @@ import { useCompetitors } from "@/hooks/useApi";
 import { cn, formatCompact, formatNumber } from "@/lib/utils";
 
 const COLORS = [
-  "hsl(262 83% 58%)",
-  "hsl(199 89% 48%)",
-  "hsl(142 71% 45%)",
-  "hsl(38 92% 50%)",
-  "hsl(0 72% 51%)",
-  "hsl(280 65% 60%)",
+  "hsl(var(--chart-1))",
+  "hsl(var(--chart-2))",
+  "hsl(var(--chart-3))",
+  "hsl(var(--chart-4))",
+  "hsl(var(--chart-5))",
+  "hsl(var(--chart-6))",
 ];
 
 function Sparkline({ data, color }: { data: number[]; color: string }) {

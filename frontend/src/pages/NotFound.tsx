@@ -16,7 +16,7 @@ export default function NotFound() {
         <Logo className="mx-auto justify-center" />
 
         <div className="relative mt-10">
-          <p className="bg-gradient-to-br from-violet-600 via-indigo-600 to-blue-600 bg-clip-text text-[140px] font-extrabold leading-none text-transparent sm:text-[200px]">
+          <p className="bg-brand-gradient bg-clip-text font-display text-[140px] font-bold leading-none text-transparent sm:text-[200px]">
             404
           </p>
           <div className="absolute inset-x-0 -bottom-2 flex justify-center">
@@ -24,7 +24,7 @@ export default function NotFound() {
           </div>
         </div>
 
-        <h1 className="mt-6 text-2xl font-bold tracking-tight">Page not found</h1>
+        <h1 className="mt-6 font-display text-2xl font-semibold tracking-tight">Page not found</h1>
         <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved. Let's get you back on track.
         </p>

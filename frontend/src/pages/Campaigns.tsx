@@ -38,7 +38,7 @@ export default function Campaigns() {
 
   const chartData = campaigns
     .filter((c) => c.status === "active")
-    .map((c) => ({ name: c.name.length > 14 ? c.name.slice(0, 14) + "…" : c.name, conversions: c.conversions, color: "hsl(262 83% 58%)" }));
+    .map((c) => ({ name: c.name.length > 14 ? c.name.slice(0, 14) + "…" : c.name, conversions: c.conversions, color: "hsl(var(--chart-1))" }));
 
   return (
     <div className="space-y-6">
@@ -94,7 +94,7 @@ export default function Campaigns() {
                 />
                 <Bar dataKey="conversions" radius={[0, 6, 6, 0]} barSize={18}>
                   {chartData.map((_, i) => (
-                    <Cell key={i} fill="hsl(262 83% 58%)" />
+                    <Cell key={i} fill="hsl(var(--chart-1))" />
                   ))}
                 </Bar>
               </BarChart>
@@ -156,8 +156,10 @@ export default function Campaigns() {
                         <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
                           <div
                             className={cn(
-                              "h-full rounded-full bg-gradient-to-r",
-                              util > 90 ? "from-amber-500 to-rose-500" : "from-primary to-indigo-500"
+                              "h-full rounded-full",
+                              util > 90
+                                ? "bg-gradient-to-r from-[hsl(var(--warning))] to-[hsl(var(--destructive))]"
+                                : "bg-brand-gradient"
                             )}
                             style={{ width: `${util}%` }}
                           />

@@ -30,7 +30,7 @@ export default function Profile() {
 
       {/* Profile header */}
       <Card className="overflow-hidden">
-        <div className="h-32 w-full bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600" />
+        <div className="h-32 w-full bg-brand-gradient" />
         <CardContent className="px-6 pb-6">
           <div className="-mt-12 flex flex-col gap-4 sm:flex-row sm:items-end">
             <div className="relative">
