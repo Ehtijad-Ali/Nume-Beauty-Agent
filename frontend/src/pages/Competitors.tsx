@@ -163,46 +163,6 @@ export default function Competitors() {
         </Card>
       </div>
 
-      {/* Traffic Comparison Chart */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Traffic Comparison</CardTitle>
-          <CardDescription>Organic vs Paid traffic across competitors</CardDescription>
-        </CardHeader>
-        <CardContent>
-          {isLoading ? (
-            <Skeleton className="h-[300px] w-full" />
-          ) : (
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={competitors}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis 
-                  dataKey="name" 
-                  tick={{ fontSize: 12 }}
-                  stroke="hsl(var(--muted-foreground))"
-                />
-                <YAxis 
-                  tick={{ fontSize: 12 }}
-                  stroke="hsl(var(--muted-foreground))"
-                />
-                <RechartsTooltip
-                  contentStyle={{
-                    borderRadius: 10,
-                    border: "1px solid hsl(var(--border))",
-                    background: "hsl(var(--popover))",
-                    color: "hsl(var(--popover-foreground))",
-                    fontSize: 12,
-                  }}
-                  formatter={(value: number) => formatCompact(value)}
-                />
-                <Bar dataKey="organicTraffic" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="paidTraffic" fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          )}
-        </CardContent>
-      </Card>
-
       {/* Competitor cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {isLoading
