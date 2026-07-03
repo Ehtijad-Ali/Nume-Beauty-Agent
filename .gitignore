@@ -1,0 +1,43 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# --- Node ---
+node_modules/
+dist/
+.vite/
+
+# --- Env / secrets ---
+.env
+.env.local
+.env.*.local
+!**/.env.example
+!**/.env.example
+
+# --- IDE ---
+.vscode/
+.idea/
+.DS_Store
+
+# --- Logs ---
+*.log
+logs/*
+!logs/.gitkeep
+
+# --- Uploads (runtime content) ---
+uploads/*
+!uploads/.gitkeep
+
+# --- Test artifacts ---
+.pytest_cache/
+.coverage
+
+# --- Type checking ---
+.mypy_cache/
+.ruff_cache/
+
+# --- Build artifacts ---
+*.tsbuildinfo
