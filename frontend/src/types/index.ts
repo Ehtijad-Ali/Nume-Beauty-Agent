@@ -74,9 +74,10 @@ export interface Competitor {
   domain: string;
   logo?: string;
   shareOfVoice: number; // percentage 0..100
-  traffic: number;
-  keywords: number;
-  ads: number;
+  organicTraffic: number;
+  paidTraffic: number;
+  organicKeywords: number;
+  paidKeywords: number;
   trend: number[]; // sparkline values
   change: number; // pct
 }

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Plus, Globe, TrendingUp, TrendingDown, Swords, ExternalLink } from "lucide-react";
-import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip as RechartsTooltip, LineChart, Line } from "recharts";
+import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip as RechartsTooltip, LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -163,6 +163,46 @@ export default function Competitors() {
         </Card>
       </div>
 
+      {/* Traffic comparison chart */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Traffic Comparison</CardTitle>
+          <CardDescription>Organic vs Paid traffic across competitors</CardDescription>
+        </CardHeader>
+        <CardContent>
+          {isLoading ? (
+            <Skeleton className="h-[300px] w-full" />
+          ) : (
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={competitors}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis 
+                  dataKey="name" 
+                  stroke="hsl(var(--muted-foreground))"
+                  style={{ fontSize: '12px' }}
+                />
+                <YAxis 
+                  stroke="hsl(var(--muted-foreground))"
+                  style={{ fontSize: '12px' }}
+                />
+                <RechartsTooltip
+                  contentStyle={{
+                    borderRadius: 10,
+                    border: "1px solid hsl(var(--border))",
+                    background: "hsl(var(--popover))",
+                    color: "hsl(var(--popover-foreground))",
+                    fontSize: 12,
+                  }}
+                  formatter={(value: number) => formatCompact(value)}
+                />
+                <Bar dataKey="organicTraffic" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="paidTraffic" fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          )}
+        </CardContent>
+      </Card>
+
       {/* Competitor cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {isLoading
@@ -217,18 +257,22 @@ export default function Competitors() {
                         <Sparkline data={c.trend} color={color} />
                       </div>
 
-                      <div className="mt-4 grid grid-cols-3 gap-3 border-t border-border pt-4">
+                      <div className="mt-4 grid grid-cols-2 gap-3 border-t border-border pt-4">
                         <div>
-                          <p className="text-xs text-muted-foreground">Traffic</p>
-                          <p className="text-sm font-semibold">{formatCompact(c.traffic)}</p>
+                          <p className="text-xs text-muted-foreground">Organic Traffic</p>
+                          <p className="text-sm font-semibold">{formatCompact(c.organicTraffic)}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-muted-foreground">Keywords</p>
-                          <p className="text-sm font-semibold">{formatNumber(c.keywords)}</p>
+                          <p className="text-xs text-muted-foreground">Paid Traffic</p>
+                          <p className="text-sm font-semibold">{formatCompact(c.paidTraffic)}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-muted-foreground">Ads</p>
-                          <p className="text-sm font-semibold">{formatNumber(c.ads)}</p>
+                          <p className="text-xs text-muted-foreground">Organic Keywords</p>
+                          <p className="text-sm font-semibold">{formatNumber(c.organicKeywords)}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-muted-foreground">Paid Keywords</p>
+                          <p className="text-sm font-semibold">{formatNumber(c.paidKeywords)}</p>
                         </div>
                       </div>
 
