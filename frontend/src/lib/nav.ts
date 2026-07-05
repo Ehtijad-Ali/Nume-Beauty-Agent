@@ -8,6 +8,7 @@ import {
   Star,
   Users,
   Settings,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -29,6 +30,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { label: "Dashboard", to: "/", icon: LayoutDashboard },
       { label: "Products", to: "/products", icon: Package },
       { label: "Knowledge Base", to: "/knowledge", icon: BookOpen },
+      { label: "AI Assistant", to: "/assistant", icon: Sparkles },
       { label: "Campaigns", to: "/campaigns", icon: Megaphone },
       { label: "Uploads", to: "/uploads", icon: UploadCloud },
     ],

@@ -232,9 +232,17 @@ export default function Products() {
                   >
                     <TableCell className="font-medium">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary/15 to-[hsl(var(--chart-2)/0.15)] text-primary">
-                          <Package className="h-4 w-4" />
-                        </div>
+                        {p.thumbnail ? (
+                          <img
+                            src={p.thumbnail}
+                            alt={p.name}
+                            className="h-9 w-9 shrink-0 rounded-lg border border-border/60 object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary/15 to-[hsl(var(--chart-2)/0.15)] text-primary">
+                            <Package className="h-4 w-4" />
+                          </div>
+                        )}
                         <span>{p.name}</span>
                       </div>
                     </TableCell>
@@ -347,7 +355,7 @@ export default function Products() {
                 )}
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="price">Price (USD)</Label>
+                <Label htmlFor="price">Price (PKR)</Label>
                 <Input id="price" type="number" step="0.01" {...form.register("price")} />
                 {form.formState.errors.price && (
                   <p className="text-xs text-destructive">{form.formState.errors.price.message}</p>

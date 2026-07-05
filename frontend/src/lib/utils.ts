@@ -26,12 +26,12 @@ export function formatNumber(n: number): string {
 }
 
 /**
- * Format a USD currency value.
+ * Format a PKR currency value (e.g. "Rs 2,400").
  */
 export function formatCurrency(n: number, opts: Intl.NumberFormatOptions = {}): string {
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("en-PK", {
     style: "currency",
-    currency: "USD",
+    currency: "PKR",
     maximumFractionDigits: 0,
     ...opts,
   }).format(n);

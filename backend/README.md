@@ -224,6 +224,34 @@ Each resource follows the same shape:
 | DELETE | `/uploads/{id}`           | any user  | Delete + remove file      |
 | GET    | `/uploads/{id}/download`  | any user  | Download the file         |
 
+### RAG assistant (`/rag`) — Phase 2.3
+
+Retrieval-augmented generation over the knowledge base. Flow: user prompt →
+semantic search → chunk ranking (priority boost for Brand Guidelines / Brand
+Voice / Product Catalogue / Customer Personas) → context + brand-context
+injection → LLM (Claude / GPT / mock) → cited answer. Every response carries
+its full debug envelope: retrieved chunks with similarity scores, the final
+prompt, source documents, token usage and response times.
+
+| Method | Endpoint                              | Auth     | Description                                   |
+| ------ | ------------------------------------- | -------- | --------------------------------------------- |
+| POST   | `/rag/query`                          | any user | Ask a question (optionally in a conversation) |
+| GET    | `/rag/conversations`                  | any user | List conversations                            |
+| POST   | `/rag/conversations`                  | any user | Create an empty conversation                  |
+| GET    | `/rag/conversations/{id}`             | any user | Get a conversation                            |
+| DELETE | `/rag/conversations/{id}`             | any user | Delete a conversation + messages              |
+| GET    | `/rag/conversations/{id}/messages`    | any user | List messages (oldest first)                  |
+| GET    | `/rag/messages/{id}/debug`            | any user | Admin: chunks, final prompt, usage, timings   |
+| GET    | `/rag/stats`                          | any user | Admin: token usage + latency summary          |
+| GET    | `/rag/config`                         | any user | Active provider/model + retrieval settings    |
+
+Configure via `.env`: `LLM_PROVIDER` (`claude` | `openai` | `mock`),
+`CLAUDE_API_KEY` / `OPENAI_API_KEY`, `CLAUDE_MODEL` / `OPENAI_MODEL`, and the
+`RAG_*` retrieval knobs (`RAG_TOP_K`, `RAG_SCORE_THRESHOLD`,
+`RAG_MAX_CONTEXT_CHARS`, `RAG_HISTORY_MESSAGES`,
+`RAG_ALLOW_GENERAL_KNOWLEDGE`, …). The `mock` provider is offline and
+deterministic — useful for dev and used by the test suite.
+
 ### Settings (`/settings`)
 
 | Method | Endpoint              | Auth               | Description                |
@@ -280,6 +308,19 @@ All configuration is read from environment variables (or `.env`). Key variables:
 | `REFRESH_TOKEN_EXPIRE_DAYS`  | `7`                      | Refresh token TTL                    |
 | `UPLOAD_PATH`                | `./uploads`              | Local upload directory               |
 | `MAX_UPLOAD_SIZE_MB`         | `50`                     | Max file size for uploads            |
+| `QDRANT_MODE`                | `embedded`               | `embedded` (local folder, single process), `remote` (Qdrant server), `memory` (tests) |
+| `QDRANT_PATH`                | `./qdrant_data`          | Storage folder for embedded mode     |
+| `QDRANT_URL`                 | `http://localhost:6333`  | Qdrant server URL (`remote` mode)    |
+| `QDRANT_COLLECTION`          | `nume_knowledge`         | Vector collection name               |
+| `EMBEDDING_PROVIDER`         | `fastembed`              | `fastembed` (local ONNX) or `hashing` (tests) |
+| `EMBEDDING_MODEL`            | `BAAI/bge-small-en-v1.5` | fastembed model (384-dim; downloads once on first use) |
+| `EMBEDDING_BATCH_SIZE`       | `32`                     | Chunks embedded per batch            |
+| `EMBEDDING_MAX_RETRIES`      | `3`                      | Retries per batch (exponential backoff) |
+
+> ⚠️ **Embedded Qdrant is single-process.** The dev server (`uvicorn --reload`)
+> is fine, but multi-worker deployments (e.g. the Docker Compose command uses
+> `--workers 2`) must set `QDRANT_MODE=remote` and point `QDRANT_URL` at a
+> running Qdrant server.
 | `OPENAI_API_KEY`             | _(empty)_                | Stored only, **not used** in Phase 1.1 |
 | `CLAUDE_API_KEY`             | _(empty)_                | Stored only, **not used** in Phase 1.1 |
 | `GEMINI_API_KEY`             | _(empty)_                | Stored only, **not used** in Phase 1.1 |

@@ -21,26 +21,28 @@ const iso = (daysAgo: number) =>
   new Date(today.getTime() - daysAgo * 86400000).toISOString();
 
 export const mockProducts: Product[] = [
-  { id: "p_001", name: "Aurora Serum", sku: "NUM-SRM-001", category: "Skincare", price: 78, stock: 1240, status: "active", sales: 18420, createdAt: iso(124) },
-  { id: "p_002", name: "Velvet Lip Tint", sku: "NUM-LIP-014", category: "Cosmetics", price: 24, stock: 3820, status: "active", sales: 92110, createdAt: iso(98) },
-  { id: "p_003", name: "Hydra Glow Toner", sku: "NUM-TON-007", category: "Skincare", price: 42, stock: 540, status: "active", sales: 22810, createdAt: iso(82) },
-  { id: "p_004", name: "Cloud Foundation", sku: "NUM-FND-022", category: "Cosmetics", price: 56, stock: 0, status: "draft", sales: 0, createdAt: iso(45) },
-  { id: "p_005", name: "Silk Hair Mask", sku: "NUM-HAR-009", category: "Haircare", price: 38, stock: 1820, status: "active", sales: 13420, createdAt: iso(210) },
-  { id: "p_006", name: "Petal Blush Compact", sku: "NUM-BLU-031", category: "Cosmetics", price: 32, stock: 980, status: "active", sales: 18760, createdAt: iso(67) },
-  { id: "p_007", name: "Radiance Eye Cream", sku: "NUM-EYE-002", category: "Skincare", price: 64, stock: 640, status: "active", sales: 9820, createdAt: iso(180) },
-  { id: "p_008", name: "Sun Veil SPF 50", sku: "NUM-SUN-018", category: "Skincare", price: 44, stock: 2240, status: "active", sales: 27310, createdAt: iso(154) },
-  { id: "p_009", name: "Velour Eyeshadow Kit", sku: "NUM-EYE-045", category: "Cosmetics", price: 88, stock: 410, status: "paused", sales: 4120, createdAt: iso(40) },
-  { id: "p_010", name: "Bloom Body Lotion", sku: "NUM-BDY-011", category: "Body", price: 28, stock: 3120, status: "active", sales: 15200, createdAt: iso(120) },
-  { id: "p_011", name: "Pure Cleansing Gel", sku: "NUM-CLN-003", category: "Skincare", price: 32, stock: 2810, status: "active", sales: 21340, createdAt: iso(200) },
-  { id: "p_012", name: "Lush Brow Pomade", sku: "NUM-BRW-007", category: "Cosmetics", price: 22, stock: 0, status: "archived", sales: 5400, createdAt: iso(300) },
-  { id: "p_013", name: "Crystal Facial Mist", sku: "NUM-MST-002", category: "Skincare", price: 36, stock: 1190, status: "active", sales: 11200, createdAt: iso(35) },
-  { id: "p_014", name: "Moonlight Hand Cream", sku: "NUM-HND-004", category: "Body", price: 18, stock: 4280, status: "active", sales: 8900, createdAt: iso(75) },
-  { id: "p_015", name: "Opal Highlighter", sku: "NUM-HLT-012", category: "Cosmetics", price: 34, stock: 510, status: "draft", sales: 0, createdAt: iso(12) },
-  { id: "p_016", name: "Velvet Matte Lipstick", sku: "NUM-LIP-019", category: "Cosmetics", price: 26, stock: 2980, status: "active", sales: 41020, createdAt: iso(140) },
-  { id: "p_017", name: "Mist Hydrating Mask", sku: "NUM-MST-009", category: "Skincare", price: 48, stock: 720, status: "active", sales: 7620, createdAt: iso(95) },
-  { id: "p_018", name: "Pure Glow Exfoliator", sku: "NUM-EXF-001", category: "Skincare", price: 40, stock: 1450, status: "active", sales: 13210, createdAt: iso(160) },
-  { id: "p_019", name: "Bloom Hair Serum", sku: "NUM-HAR-021", category: "Haircare", price: 46, stock: 920, status: "active", sales: 6310, createdAt: iso(58) },
-  { id: "p_020", name: "Petal Cream Shadow", sku: "NUM-EYE-058", category: "Cosmetics", price: 28, stock: 0, status: "paused", sales: 0, createdAt: iso(8) },
+  { id: "p_001", name: "Aurora Serum", sku: "NUM-SRM-001", category: "Skincare", price: 7800, stock: 1240, status: "active", sales: 18420, createdAt: iso(124) },
+  { id: "p_002", name: "Velvet Lip Tint — Strawberry", sku: "NUM-LIP-014", category: "Cosmetics", price: 2400, stock: 3820, status: "active", sales: 92110, createdAt: iso(98), thumbnail: "/brand/shade-strawberry.jpg" },
+  { id: "p_003", name: "Hydra Glow Toner", sku: "NUM-TON-007", category: "Skincare", price: 4200, stock: 540, status: "active", sales: 22810, createdAt: iso(82) },
+  { id: "p_004", name: "Cloud Foundation", sku: "NUM-FND-022", category: "Cosmetics", price: 5600, stock: 0, status: "draft", sales: 0, createdAt: iso(45) },
+  { id: "p_005", name: "Silk Hair Mask", sku: "NUM-HAR-009", category: "Haircare", price: 3800, stock: 1820, status: "active", sales: 13420, createdAt: iso(210) },
+  { id: "p_006", name: "Petal Blush Compact", sku: "NUM-BLU-031", category: "Cosmetics", price: 3200, stock: 980, status: "active", sales: 18760, createdAt: iso(67) },
+  { id: "p_007", name: "Radiance Eye Cream", sku: "NUM-EYE-002", category: "Skincare", price: 6400, stock: 640, status: "active", sales: 9820, createdAt: iso(180) },
+  { id: "p_008", name: "Sun Veil SPF 50", sku: "NUM-SUN-018", category: "Skincare", price: 4400, stock: 2240, status: "active", sales: 27310, createdAt: iso(154) },
+  { id: "p_009", name: "Velour Eyeshadow Kit", sku: "NUM-EYE-045", category: "Cosmetics", price: 8800, stock: 410, status: "paused", sales: 4120, createdAt: iso(40) },
+  { id: "p_010", name: "Bloom Body Lotion", sku: "NUM-BDY-011", category: "Body", price: 2800, stock: 3120, status: "active", sales: 15200, createdAt: iso(120) },
+  { id: "p_011", name: "Pure Cleansing Gel", sku: "NUM-CLN-003", category: "Skincare", price: 3200, stock: 2810, status: "active", sales: 21340, createdAt: iso(200) },
+  { id: "p_012", name: "Lush Brow Pomade", sku: "NUM-BRW-007", category: "Cosmetics", price: 2200, stock: 0, status: "archived", sales: 5400, createdAt: iso(300) },
+  { id: "p_013", name: "Crystal Facial Mist", sku: "NUM-MST-002", category: "Skincare", price: 3600, stock: 1190, status: "active", sales: 11200, createdAt: iso(35) },
+  { id: "p_014", name: "Moonlight Hand Cream", sku: "NUM-HND-004", category: "Body", price: 1800, stock: 4280, status: "active", sales: 8900, createdAt: iso(75) },
+  { id: "p_015", name: "Opal Highlighter", sku: "NUM-HLT-012", category: "Cosmetics", price: 3400, stock: 510, status: "draft", sales: 0, createdAt: iso(12) },
+  { id: "p_016", name: "Velvet Matte Lipstick", sku: "NUM-LIP-019", category: "Cosmetics", price: 2600, stock: 2980, status: "active", sales: 41020, createdAt: iso(140), thumbnail: "/brand/shade-cherry.jpg" },
+  { id: "p_017", name: "Mist Hydrating Mask", sku: "NUM-MST-009", category: "Skincare", price: 4800, stock: 720, status: "active", sales: 7620, createdAt: iso(95) },
+  { id: "p_018", name: "Pure Glow Exfoliator", sku: "NUM-EXF-001", category: "Skincare", price: 4000, stock: 1450, status: "active", sales: 13210, createdAt: iso(160) },
+  { id: "p_019", name: "Bloom Hair Serum", sku: "NUM-HAR-021", category: "Haircare", price: 4600, stock: 920, status: "active", sales: 6310, createdAt: iso(58) },
+  { id: "p_020", name: "Petal Cream Shadow", sku: "NUM-EYE-058", category: "Cosmetics", price: 2800, stock: 0, status: "paused", sales: 0, createdAt: iso(8) },
+  { id: "p_021", name: "Velvet Lip Tint — Chocolat", sku: "NUM-LIP-021", category: "Cosmetics", price: 2400, stock: 2140, status: "active", sales: 18930, createdAt: iso(22), thumbnail: "/brand/shade-chocolate.jpg" },
+  { id: "p_022", name: "Velvet Lip Tint — Peach", sku: "NUM-LIP-022", category: "Cosmetics", price: 2400, stock: 2760, status: "active", sales: 24410, createdAt: iso(22), thumbnail: "/brand/shade-peach.jpg" },
 ];
 
 export const mockCampaigns: Campaign[] = [
@@ -55,16 +57,16 @@ export const mockCampaigns: Campaign[] = [
 ];
 
 export const mockKnowledge: KnowledgeDocument[] = [
-  { id: "k_001", title: "Brand Voice Guidelines 2025.pdf", type: "pdf", size: 1_840_000, status: "ready", tags: ["brand", "guidelines"], uploadedBy: "Mira Shah", uploadedAt: iso(8), excerpt: "Defines the NUMÉ tone of voice, vocabulary do's and don'ts, and writing principles across channels." },
-  { id: "k_002", title: "Product Catalogue Q2.xlsx", type: "xlsx", size: 920_000, status: "ready", tags: ["catalog", "products"], uploadedBy: "Arman Khan", uploadedAt: iso(14), excerpt: "Master spreadsheet of SKUs, pricing, inventory and category metadata for Q2 2025." },
-  { id: "k_003", title: "Competitor Audit Notes.docx", type: "docx", size: 410_000, status: "ready", tags: ["competitive", "research"], uploadedBy: "Lea Roy", uploadedAt: iso(22), excerpt: "Qualitative analysis of 6 direct competitors: positioning, packaging, pricing, and reviews." },
-  { id: "k_004", title: "Customer Personas.md", type: "md", size: 28_000, status: "ready", tags: ["audience", "personas"], uploadedBy: "Mira Shah", uploadedAt: iso(30), excerpt: "Five primary personas mapped to lifecycle stages, pain points, and messaging angles." },
-  { id: "k_005", title: "Seasonal Trend Report.csv", type: "csv", size: 184_000, status: "processing", tags: ["trends", "data"], uploadedBy: "Diego Marin", uploadedAt: iso(1), excerpt: "Aggregated 12-month search trend data across 38 keywords." },
-  { id: "k_006", title: "Influencer Brief — Aurora Serum.pdf", type: "pdf", size: 680_000, status: "ready", tags: ["influencer", "campaign"], uploadedBy: "Arman Khan", uploadedAt: iso(12), excerpt: "Brief and talking points sent to 14 creators for the Aurora Serum launch." },
-  { id: "k_007", title: "Pricing Strategy Memo.txt", type: "txt", size: 12_000, status: "ready", tags: ["pricing", "strategy"], uploadedBy: "Lea Roy", uploadedAt: iso(45), excerpt: "Internal memo on premiumisation ladder and bundle pricing architecture." },
-  { id: "k_008", title: "Newsletter Archive URL", type: "url", size: 0, status: "ready", tags: ["email", "archive"], uploadedBy: "Mira Shah", uploadedAt: iso(5), excerpt: "Crawled archive of the last 24 monthly newsletters, indexed for retrieval." },
-  { id: "k_009", title: "Patent Filings Review.pdf", type: "pdf", size: 2_400_000, status: "failed", tags: ["legal", "ip"], uploadedBy: "Diego Marin", uploadedAt: iso(2), excerpt: "Document could not be parsed due to encrypted sections." },
-  { id: "k_010", title: "Retail Partner Onboarding.docx", type: "docx", size: 320_000, status: "queued", tags: ["retail", "ops"], uploadedBy: "Arman Khan", uploadedAt: iso(0), excerpt: "Standard operating procedures for onboarding new retail partners." },
+  { id: "k_001", title: "Brand Voice Guidelines 2025.pdf", type: "pdf", size: 1_840_000, status: "ready", tags: ["brand", "guidelines"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Mira Shah", uploadedAt: iso(8), excerpt: "Defines the NUMÉ tone of voice, vocabulary do's and don'ts, and writing principles across channels." },
+  { id: "k_002", title: "Product Catalogue Q2.xlsx", type: "xlsx", size: 920_000, status: "ready", tags: ["catalog", "products"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Arman Khan", uploadedAt: iso(14), excerpt: "Master spreadsheet of SKUs, pricing, inventory and category metadata for Q2 2025." },
+  { id: "k_003", title: "Competitor Audit Notes.docx", type: "docx", size: 410_000, status: "ready", tags: ["competitive", "research"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Lea Roy", uploadedAt: iso(22), excerpt: "Qualitative analysis of 6 direct competitors: positioning, packaging, pricing, and reviews." },
+  { id: "k_004", title: "Customer Personas.md", type: "md", size: 28_000, status: "ready", tags: ["audience", "personas"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Mira Shah", uploadedAt: iso(30), excerpt: "Five primary personas mapped to lifecycle stages, pain points, and messaging angles." },
+  { id: "k_005", title: "Seasonal Trend Report.csv", type: "csv", size: 184_000, status: "processing", tags: ["trends", "data"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Diego Marin", uploadedAt: iso(1), excerpt: "Aggregated 12-month search trend data across 38 keywords." },
+  { id: "k_006", title: "Influencer Brief — Aurora Serum.pdf", type: "pdf", size: 680_000, status: "ready", tags: ["influencer", "campaign"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Arman Khan", uploadedAt: iso(12), excerpt: "Brief and talking points sent to 14 creators for the Aurora Serum launch." },
+  { id: "k_007", title: "Pricing Strategy Memo.txt", type: "txt", size: 12_000, status: "ready", tags: ["pricing", "strategy"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Lea Roy", uploadedAt: iso(45), excerpt: "Internal memo on premiumisation ladder and bundle pricing architecture." },
+  { id: "k_008", title: "Newsletter Archive URL", type: "url", size: 0, status: "ready", tags: ["email", "archive"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Mira Shah", uploadedAt: iso(5), excerpt: "Crawled archive of the last 24 monthly newsletters, indexed for retrieval." },
+  { id: "k_009", title: "Patent Filings Review.pdf", type: "pdf", size: 2_400_000, status: "failed", tags: ["legal", "ip"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Diego Marin", uploadedAt: iso(2), excerpt: "Document could not be parsed due to encrypted sections." },
+  { id: "k_010", title: "Retail Partner Onboarding.docx", type: "docx", size: 320_000, status: "queued", tags: ["retail", "ops"], version: 1, chunkCount: 0, embeddingStatus: "none", vectorCount: 0, uploadedBy: "Arman Khan", uploadedAt: iso(0), excerpt: "Standard operating procedures for onboarding new retail partners." },
 ];
 
 export const mockUploads: UploadRecord[] = [
@@ -77,12 +79,12 @@ export const mockUploads: UploadRecord[] = [
 ];
 
 export const mockCompetitors: Competitor[] = [
-  { id: "cp_001", name: "GlossAura", domain: "glossaura.com", shareOfVoice: 28, traffic: 1_240_000, keywords: 4820, ads: 124, trend: [22, 25, 24, 28, 30, 27, 28], change: 12.4 },
-  { id: "cp_002", name: "Velvet Labs", domain: "velvetlabs.co", shareOfVoice: 22, traffic: 980_000, keywords: 3120, ads: 98, trend: [30, 28, 26, 24, 23, 22, 22], change: -8.1 },
-  { id: "cp_003", name: "PureHue", domain: "purehue.io", shareOfVoice: 18, traffic: 760_000, keywords: 2840, ads: 76, trend: [14, 15, 16, 17, 17, 18, 18], change: 4.2 },
-  { id: "cp_004", name: "Bloom & Co", domain: "bloomandco.com", shareOfVoice: 14, traffic: 540_000, keywords: 1980, ads: 62, trend: [18, 17, 17, 16, 15, 14, 14], change: -3.6 },
-  { id: "cp_005", name: "Miraé", domain: "mirae.beauty", shareOfVoice: 10, traffic: 410_000, keywords: 1240, ads: 48, trend: [6, 7, 8, 9, 9, 10, 10], change: 6.8 },
-  { id: "cp_006", name: "Aether Skin", domain: "aetherskin.com", shareOfVoice: 8, traffic: 320_000, keywords: 980, ads: 32, trend: [10, 9, 9, 8, 8, 8, 8], change: -1.2 },
+  { id: "cp_001", name: "GlossAura", domain: "glossaura.com", shareOfVoice: 28, organicTraffic: 1_240_000, paidTraffic: 0, organicKeywords: 4820, paidKeywords: 124, trend: [22, 25, 24, 28, 30, 27, 28], change: 12.4 },
+  { id: "cp_002", name: "Velvet Labs", domain: "velvetlabs.co", shareOfVoice: 22, organicTraffic: 980_000, paidTraffic: 0, organicKeywords: 3120, paidKeywords: 98, trend: [30, 28, 26, 24, 23, 22, 22], change: -8.1 },
+  { id: "cp_003", name: "PureHue", domain: "purehue.io", shareOfVoice: 18, organicTraffic: 760_000, paidTraffic: 0, organicKeywords: 2840, paidKeywords: 76, trend: [14, 15, 16, 17, 17, 18, 18], change: 4.2 },
+  { id: "cp_004", name: "Bloom & Co", domain: "bloomandco.com", shareOfVoice: 14, organicTraffic: 540_000, paidTraffic: 0, organicKeywords: 1980, paidKeywords: 62, trend: [18, 17, 17, 16, 15, 14, 14], change: -3.6 },
+  { id: "cp_005", name: "Miraé", domain: "mirae.beauty", shareOfVoice: 10, organicTraffic: 410_000, paidTraffic: 0, organicKeywords: 1240, paidKeywords: 48, trend: [6, 7, 8, 9, 9, 10, 10], change: 6.8 },
+  { id: "cp_006", name: "Aether Skin", domain: "aetherskin.com", shareOfVoice: 8, organicTraffic: 320_000, paidTraffic: 0, organicKeywords: 980, paidKeywords: 32, trend: [10, 9, 9, 8, 8, 8, 8], change: -1.2 },
 ];
 
 export const mockReviews: CustomerReview[] = [

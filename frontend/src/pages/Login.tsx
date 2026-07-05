@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, Loader2, Mail, Lock, Sparkles, TrendingUp, ShieldCheck, BarChart3 } from "lucide-react";
+import { Eye, EyeOff, Loader2, Mail, Lock, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -156,19 +156,17 @@ export default function Login() {
         </p>
       </div>
 
-      {/* Right: showcase panel */}
-      <div className="relative hidden overflow-hidden bg-brand-gradient lg:block">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_60%)]" />
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.08) 1px,transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
+      {/* Right: brand showcase — campaign teaser shot */}
+      <div className="relative hidden overflow-hidden lg:block">
+        <img
+          src="/brand/teaser-wand.jpg"
+          alt="NUMÉ Beauty — coming soon campaign teaser"
+          className="absolute inset-0 h-full w-full object-cover"
         />
+        {/* darken the top edge so the copy stays legible over the photo */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
 
-        <div className="relative flex h-full flex-col justify-center p-12 text-white">
+        <div className="relative flex h-full flex-col p-12 text-white">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -186,21 +184,6 @@ export default function Login() {
               NUMÉ unifies your products, knowledge base, competitor data and
               customer reviews into one beautiful command centre.
             </p>
-
-            <div className="mt-10 grid grid-cols-2 gap-4">
-              {[
-                { icon: TrendingUp, title: "Performance", desc: "Live campaign metrics" },
-                { icon: BarChart3, title: "Insights", desc: "Competitor benchmarks" },
-                { icon: ShieldCheck, title: "Secure", desc: "SSO & audit logs" },
-                { icon: Sparkles, title: "Premium UX", desc: "Designed for focus" },
-              ].map((f) => (
-                <div key={f.title} className="rounded-xl border border-white/15 bg-white/5 p-4 backdrop-blur">
-                  <f.icon className="h-5 w-5" />
-                  <p className="mt-2 text-sm font-semibold">{f.title}</p>
-                  <p className="text-xs text-white/70">{f.desc}</p>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>

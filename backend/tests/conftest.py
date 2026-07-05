@@ -28,6 +28,12 @@ os.environ["JWT_SECRET"] = "test-secret-test-secret-test"
 os.environ["REDIS_URL"] = "redis://localhost:6379/0"
 os.environ["APP_ENV"] = "test"
 os.environ["APP_DEBUG"] = "true"
+# Phase 2.2: in-process vector store + deterministic dependency-free embeddings
+os.environ["QDRANT_MODE"] = "memory"
+os.environ["EMBEDDING_PROVIDER"] = "hashing"
+os.environ["EMBEDDING_RETRY_BACKOFF"] = "0.01"
+# Phase 2.3: deterministic offline LLM provider
+os.environ["LLM_PROVIDER"] = "mock"
 
 from app.database.base import Base  # noqa: E402
 import app.models  # noqa: E402, F401  (register models)
@@ -63,6 +69,28 @@ def db_session(db_engine) -> Iterator[Session]:
         yield session
     finally:
         session.close()
+
+
+@pytest.fixture(autouse=True)
+def vector_test_env(db_engine, monkeypatch):
+    """Fresh in-memory Qdrant per test + embedding jobs bound to the test DB.
+
+    Background embedding jobs open their own session; point them at the
+    test engine instead of the (empty) module-level SessionLocal.
+    """
+    from sqlalchemy.orm import sessionmaker as _sessionmaker
+
+    from app.ai import providers as llm_providers
+    from app.services import embedding_service, vector_store
+
+    vector_store.reset_client_cache()
+    llm_providers.reset_llm_provider_cache()
+    factory = _sessionmaker(
+        bind=db_engine, autocommit=False, autoflush=False, expire_on_commit=False
+    )
+    monkeypatch.setattr(embedding_service, "_job_session_factory", lambda: factory())
+    yield
+    vector_store.reset_client_cache()
 
 
 @pytest.fixture(scope="function")

@@ -26,6 +26,21 @@ pydantic==2.10.4
 pydantic-settings==2.7.1
 email-validator==2.2.0
 
+# --- Document ingestion (Phase 2.1) ---
+pypdf==5.1.0
+python-docx==1.1.2
+
+# --- Vector search (Phase 2.2) ---
+qdrant-client==1.12.1
+fastembed==0.4.2
+
+# --- RAG engine / LLM providers (Phase 2.3) ---
+anthropic>=0.60.0
+openai>=1.60.0
+# Optional OCR extras — install to enable image indexing:
+# pytesseract==0.3.13
+# Pillow==11.1.0
+
 # --- Logging / utilities ---
 python-json-logger==3.2.1
 loguru==0.7.3

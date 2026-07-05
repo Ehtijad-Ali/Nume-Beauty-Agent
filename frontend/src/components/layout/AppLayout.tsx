@@ -33,12 +33,12 @@ export function AppLayout() {
         <div
           className={cn(
             "flex min-h-screen flex-col transition-[padding] duration-300 ease-out",
-            collapsed ? "lg:pl-[76px]" : "lg:pl-[260px]"
+            collapsed ? "lg:pl-[4.75rem]" : "lg:pl-[16.25rem]"
           )}
         >
           <Topbar />
           <main className="flex-1 px-4 py-6 lg:px-8 lg:py-8">
-            <div className="page-enter mx-auto max-w-[1400px]">
+            <div className="page-enter mx-auto max-w-[100rem]">
               <Outlet />
             </div>
           </main>

@@ -4,6 +4,7 @@ Database initialisation helper.
 Runs idempotent seed operations after migrations:
   * Ensures the four default roles exist (admin, manager, editor, viewer).
   * Ensures a default admin user exists (configurable via env).
+  * Ensures the default knowledge base categories exist.
 
 Run via:  ``python -m app.database.init_db``
 """
@@ -16,6 +17,7 @@ from sqlalchemy.orm import Session
 
 from app.core.security import hash_password
 from app.database.session import SessionLocal
+from app.models.category import Category
 from app.models.role import Role
 from app.models.user import User
 from app.config.settings import get_settings
@@ -23,6 +25,16 @@ from app.config.settings import get_settings
 logger = logging.getLogger(__name__)
 
 DEFAULT_ROLES = ["admin", "manager", "editor", "viewer"]
+
+# (name, slug, description, color)
+DEFAULT_CATEGORIES = [
+    ("Brand Guidelines", "brand-guidelines", "Voice, tone, visual identity and brand rules.", "#8B5CF6"),
+    ("Product Information", "product-information", "Product specs, ingredients, catalogues and FAQs.", "#0EA5E9"),
+    ("Marketing Material", "marketing-material", "Campaign briefs, ad copy and promotional content.", "#F59E0B"),
+    ("Reports & Analytics", "reports-analytics", "Performance reports, research and data exports.", "#10B981"),
+    ("Legal & Compliance", "legal-compliance", "Policies, terms, regulatory and compliance documents.", "#EF4444"),
+    ("Other", "other", "Anything that does not fit the other categories.", "#6B7280"),
+]
 
 
 def _seed_roles(db: Session) -> None:
@@ -56,13 +68,24 @@ def _seed_admin(db: Session) -> None:
     logger.info("Created superuser: %s (password: %s)", admin_email, admin_password)
 
 
+def _seed_categories(db: Session) -> None:
+    """Create the default knowledge base categories if missing."""
+    for name, slug, description, color in DEFAULT_CATEGORIES:
+        existing = db.query(Category).filter(Category.slug == slug).first()
+        if not existing:
+            db.add(Category(name=name, slug=slug, description=description, color=color))
+            logger.info("Created category: %s", name)
+
+
 def init_db() -> None:
-    """Seed default roles and admin user."""
+    """Seed default roles, admin user and knowledge base categories."""
     db = SessionLocal()
     try:
         _seed_roles(db)
         db.commit()
         _seed_admin(db)
+        db.commit()
+        _seed_categories(db)
         db.commit()
         logger.info("Database initialisation complete.")
     except Exception:

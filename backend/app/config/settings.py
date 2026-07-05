@@ -61,10 +61,50 @@ class Settings(BaseSettings):
     upload_path: str = "./uploads"
     max_upload_size_mb: int = 50
 
-    # --- AI provider keys (stored but NOT used in Phase 1.1) ---
+    # --- Vector store (Qdrant) — Phase 2.2 ---
+    # "embedded" persists to qdrant_path with no server; "remote" connects to
+    # qdrant_url; "memory" is for tests. NOTE: embedded mode is single-process
+    # only — multi-worker deployments (e.g. docker-compose --workers 2) must
+    # use qdrant_mode=remote with a Qdrant server.
+    qdrant_mode: Literal["embedded", "remote", "memory"] = "embedded"
+    qdrant_path: str = "./qdrant_data"
+    qdrant_url: str = "http://localhost:6333"
+    qdrant_api_key: str = ""
+    qdrant_collection: str = "nume_knowledge"
+
+    # --- Embeddings — Phase 2.2 ---
+    # "fastembed" runs a local ONNX model; "hashing" is a deterministic
+    # dependency-free fallback used in tests.
+    embedding_provider: Literal["fastembed", "hashing"] = "fastembed"
+    embedding_model: str = "BAAI/bge-small-en-v1.5"
+    embedding_batch_size: int = 32
+    embedding_max_retries: int = 3
+    embedding_retry_backoff: float = 1.0  # seconds; doubles per attempt
+
+    # --- AI provider keys ---
     openai_api_key: str = ""
     claude_api_key: str = ""
     gemini_api_key: str = ""
+
+    # --- LLM completion — Phase 2.3 ---
+    # "claude", "openai" and "gemini" call the real APIs (need the matching
+    # key above); "mock" is a deterministic, dependency-free provider used in
+    # tests/dev.
+    llm_provider: Literal["claude", "openai", "gemini", "mock"] = "claude"
+    claude_model: str = "claude-opus-4-8"
+    openai_model: str = "gpt-4o"
+    gemini_model: str = "gemini-2.5-flash"
+    llm_max_tokens: int = 1024
+    llm_temperature: float = 0.4  # OpenAI only; Claude Opus 4.8 rejects it
+
+    # --- RAG engine — Phase 2.3 ---
+    rag_top_k: int = 6
+    rag_score_threshold: float = 0.15
+    rag_max_context_chars: int = 8000
+    rag_max_chunks_per_document: int = 3  # keep retrieval multi-document
+    rag_history_messages: int = 6  # conversation-memory turns sent to the LLM
+    rag_allow_general_knowledge: bool = False  # answer outside the KB?
+    rag_priority_boost: float = 0.08  # rank bonus for priority doc categories
 
     # --- Logging ---
     log_level: str = "INFO"
